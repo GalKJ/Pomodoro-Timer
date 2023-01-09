@@ -1,2 +1,3 @@
 # Pomodoro-Timer
-A pomodoro timer built with vanilla JavaScript 
+
+A pomodoro timer built with vanilla JavaScript

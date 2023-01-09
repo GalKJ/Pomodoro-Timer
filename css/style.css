@@ -1,0 +1,49 @@
+@media only screen and (max-width: 480px) {
+  :root {
+    --main-color: #333;
+    --main-bg-color: #fafafa;
+    --main-font: 'Poppins', sans-serif;
+    --working-bg-color: #45a8e8;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: var(--main-font);
+    background: linear-gradient(45deg, var(--working-bg-color), transparent);
+  }
+
+  h1 {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  button {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--main-color);
+    color: var(--main-bg-color);
+    cursor: pointer;
+  }
+
+  #container {
+    display: grid;
+    justify-items: center;
+    min-height: 70vh;
+    align-items: center;
+  }
+
+  #timer {
+    font-size: 5rem;
+    color: var(--main-color);
+    padding: 2rem;
+    background: #45a8e81f;
+  }
+}
