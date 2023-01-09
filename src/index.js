@@ -4,9 +4,15 @@ const startButton = document.querySelector('#start');
 const stopButton = document.querySelector('#stop');
 const resetButton = document.querySelector('#reset');
 
-let seconds = 1500;
+// Event listeners.
+startButton.addEventListener('click', start);
+stopButton.addEventListener('click', stopTimer);
+resetButton.addEventListener('click', reset);
 
-// Function to define hrs, mins, secs and centi, increment the centiseconds and render the variable values to the timeEl variables inner text.
+let seconds = 1500;
+let interval = null;
+
+// Function to define mins, secs and render the variable values to the timeEl variables inner text.
 function timer() {
   seconds--;
 
@@ -17,9 +23,33 @@ function timer() {
   if (mins < 10) mins = '0' + mins;
 
   timeEl.innerText = `${mins}:${secs}`;
+
+  if (seconds === 0) {
+    stopTimer();
+    seconds = 300;
+    interval = setInterval(rest, 10);
+  }
 }
 
-// Function to run the timer function at a set interval of 10 milliseconds (1 centisecond).
+function rest() {
+  seconds--;
+
+  let mins = Math.floor(seconds / 60);
+  let secs = seconds % 60;
+
+  if (secs < 10) secs = '0' + secs;
+  if (mins < 10) mins = '0' + mins;
+
+  timeEl.innerText = `${mins}:${secs}`;
+
+  if (seconds === 0) {
+    stopTimer();
+    seconds = 1500;
+    interval = setInterval(timer, 10);
+  }
+}
+
+// Function to run the timer function at a set interval of 1000 milliseconds (1 second).
 function start() {
   if (interval) {
     return;
@@ -29,14 +59,14 @@ function start() {
 }
 
 // Function to stop the timer function running by clearing the interval.
-function stop() {
+function stopTimer() {
   clearInterval(interval);
   interval = null;
 }
 
-// Function to run the stop function, reset the centiseconds to 0, the timeEl inner text to the DOM value and the lapList inner HTML to an empty paragraph.
+// Function to call the stopTimer function, reset the timer to 25:00.
 function reset() {
   stop();
-  centiSeconds = 0;
-  timeEl.innerText = '00:00:00:00';
+  seconds = 1500;
+  timeEl.innerText = '25:00';
 }
