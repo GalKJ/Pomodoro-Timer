@@ -26,6 +26,7 @@ function timer() {
 
   if (seconds === 0) {
     stopTimer();
+    restColourPalette();
     seconds = 300;
     interval = setInterval(rest, 10);
   }
@@ -44,6 +45,7 @@ function rest() {
 
   if (seconds === 0) {
     stopTimer();
+    workColourPalette();
     seconds = 1500;
     interval = setInterval(timer, 10);
   }
@@ -69,4 +71,18 @@ function reset() {
   stop();
   seconds = 1500;
   timeEl.innerText = '25:00';
+}
+
+function restColourPalette() {
+  document.body.classList.remove('work-body-bg');
+  document.body.classList.add('rest-body-bg');
+  timeEl.classList.remove('work-time');
+  timeEl.classList.add('rest-time');
+}
+
+function workColourPalette() {
+  document.body.classList.remove('rest-body-bg');
+  document.body.classList.add('work-body-bg');
+  timeEl.classList.remove('rest-time');
+  timeEl.classList.add('work-time');
 }
