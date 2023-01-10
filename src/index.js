@@ -19,8 +19,8 @@ function timer() {
   let mins = Math.floor(seconds / 60);
   let secs = seconds % 60;
 
-  if (secs < 10) secs = '0' + secs;
-  if (mins < 10) mins = '0' + mins;
+  if (secs < 10) secs = `0${secs}`;
+  if (mins < 10) mins = `0${mins}`;
 
   timeEl.innerText = `${mins}:${secs}`;
 
@@ -39,8 +39,8 @@ function rest() {
   let mins = Math.floor(seconds / 60);
   let secs = seconds % 60;
 
-  if (secs < 10) secs = '0' + secs;
-  if (mins < 10) mins = '0' + mins;
+  if (secs < 10) secs = `0${secs}`;
+  if (mins < 10) mins = `0${mins}`;
 
   timeEl.innerText = `${mins}:${secs}`;
 
@@ -90,6 +90,6 @@ function workColourPalette() {
 }
 
 function playSound() {
-  var audio = new Audio('audio/alarm.wav');
+  const audio = new Audio('audio/alarm.wav');
   audio.play();
 }
