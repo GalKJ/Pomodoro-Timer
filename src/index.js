@@ -27,8 +27,9 @@ function timer() {
   if (seconds === 0) {
     stopTimer();
     restColourPalette();
+    playSound();
     seconds = 300;
-    interval = setInterval(rest, 10);
+    interval = setInterval(rest, 1000);
   }
 }
 
@@ -46,8 +47,9 @@ function rest() {
   if (seconds === 0) {
     stopTimer();
     workColourPalette();
+    playSound();
     seconds = 1500;
-    interval = setInterval(timer, 10);
+    interval = setInterval(timer, 1000);
   }
 }
 
@@ -57,7 +59,7 @@ function start() {
     return;
   }
 
-  interval = setInterval(timer, 10);
+  interval = setInterval(timer, 1000);
 }
 
 // Function to stop the timer function running by clearing the interval.
@@ -85,4 +87,9 @@ function workColourPalette() {
   document.body.classList.add('work-body-bg');
   timeEl.classList.remove('rest-time');
   timeEl.classList.add('work-time');
+}
+
+function playSound() {
+  var audio = new Audio('audio/alarm.wav');
+  audio.play();
 }
